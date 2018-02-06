@@ -12,10 +12,10 @@ module.exports.hotelsGetAll = function(req, res) {
      }
      
      if (req.query && req.query.offset) {
-        count = parseInt(req.query.offset, 10);
+        count = parseInt(req.query.count, 10);
      }
      
-     var returnData = hotelData.slive(offset,offset+count);
+     var returnData = hotelData.slice(offset,offset+count);
      
         res
         .status(200)
@@ -26,13 +26,13 @@ module.exports.hotelsGetOne = function(req, res) {
     var hotelId = req.params.hotelId;
     var thisHotel = hotelData[hotelId];
     console.log("GET hotelId", hotelId);
-        res
+    res
         .status(200)
         .json(thisHotel);
 };
 
 module.exports.hotelsAddOne = function(req, res) {
-    console.log("PST new hotel");
+    console.log("POST new hotel");
     console.log(req.body);
     res
         .status(200)
