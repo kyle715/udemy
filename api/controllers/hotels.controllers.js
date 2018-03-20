@@ -250,3 +250,12 @@ module.exports.hotelsDeleteOne = function(req, res){
       }
     });
 };
+
+  if (isNaN(lng) || isNaN(lat)) {
+    res
+      .status(400)
+      .json({
+        "message" : "If supplied in querystring, lng and lat must both be numbers"
+      });
+    return;
+  }
